@@ -1,20 +1,30 @@
 # This is a WebApi meant to utilize two seperate backend API's.
 
-Dog API 
-https://dog.ceo/dog-api/
+Dog API  
+
+https://dog.ceo/dog-api/  
+
 Utilizing Dog API to populate a breed list, grab relevant pictures of dogs from user breed selection, and random image generation as well
 
--Breed list
--Images by breed
--Random dog image generator
+-Breed list  
 
-OpenLibrary
-https://openlibrary.org/developers/api
-Utilizing OpenLibraries API to gather information about books that relate to different breed types.
+-Images by breed  
 
--Book Search
--Search Inside Text Search
--Author Search
+-Random dog image generator  
+
+
+OpenLibrary  
+
+https://openlibrary.org/developers/api  
+
+Utilizing OpenLibraries API to gather information about books that relate to different breed types.  
+
+-Book Search  
+
+-Search Inside Text Search  
+
+-Author Search  
+
 
 You pick your favorite dog breed, and the application will give you a book that includes the specific breed you selected. It's built to eventually be able to let the user choose between "X" amount of books that we display. 
 
