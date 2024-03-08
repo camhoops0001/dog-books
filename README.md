@@ -37,7 +37,16 @@ A few of the breeds have 100+ results, so if I wanted to spend the time on it la
 
 We could specify searching by author, by the breed being mentioned somewhere in the test of the book, in the title... etc.. 
 
-A lot of cool possibilities here.
+A lot of cool possibilities here.  
+
+## Things I would update first
+
+- I would populate the dog breeds you can select into an actual dropdown list, or seperating them so you could see all of the breed options in 3 columns as opposed to listing them single file.
+- I would give the user the ability to pick from 5 books based on the returned results instead of just one.
+- I would hook the "Save Book" functionality up with prop, event bus, or Vuex store so you could begin to curate longer list of books and collections with various breeds and books, instead of passing them as URL parameters. That was a decision made entirely because of time constraints
+- Would also hook this up to it's own DB. You could either save all of the book information so you didn't have to call out to the other API's once it's saved.. You could save the breed keys, book ID's, and author ID's if you'd rather populate the saved books from the two backend api's when starting the application
+- I chose the easiest way to make it look slightly presentable, this would have to be refactored to end up being responsive for desktop, laptop, mobile, and tablet. Would also utilize more standard CSS practices, I threw quite a few "<br>" tags that I normally would handle with margin/padding, more implicit containers
+- FavoriteDog.cs could potentially benefit from being broken into seperate components. With the artificial delay you could break out the "we're finding your book for you" section into it's own component
 
 
 ## Project setup
