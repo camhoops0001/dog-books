@@ -126,7 +126,7 @@ a:hover {
 }
 
 html {
-  height: 1000px;
+  height: 1500px;
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
   overflow: hidden;
 }
