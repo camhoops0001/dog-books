@@ -8,11 +8,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'WelcomePage',
     component: WelcomePage
   },
-  // {
-  //   path: '/dog',
-  //   name: 'FavoriteDog',
-  //   component: FavoriteDog
-  // }
   {
     path: '/favorite',
     component: () => import('@/views/FavoriteDog.vue'),

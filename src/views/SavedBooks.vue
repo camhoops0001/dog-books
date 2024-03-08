@@ -35,7 +35,7 @@
 import { defineComponent } from 'vue';
 import { getRandomDogPicture } from '../service/api'
 
-export default defineComponent({
+export default defineComponent({ 
 name: 'SavedBooks',
 data(){ 
   return {

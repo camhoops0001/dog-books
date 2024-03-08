@@ -22,7 +22,6 @@
       <div class="loader"></div>
       Please wait while we curate a book specifically for people who love {{ selectedBreed }}'s <br/> <br>
       <img :src="dogPictureUrl"/>
-      <!-- <div class="loader"></div> -->
     </div>
     <div v-if="resultsCompleted">
       <div class="white-text">
@@ -34,11 +33,6 @@
       <br> <br>
       <img class="center" :src="dogPictureUrl"/>
     </div>
-    <!-- <div class="white-text" v-if="saveThisBook">
-      Saving your {{ selectedBreed }} book Now <br/>
-      <img :src="dogPictureUrl"/>
-      <div class="loader"></div>
-    </div> -->
   </div>
 </body>
 </html>
@@ -46,13 +40,10 @@
   
 <script lang="ts">
   import { defineComponent } from 'vue';
-  import { DogBreedApiResponse, DogImageApiResponse } from '@/@types/DogApi';
-  import { OpenLibraryBookResponse, ParsedBookResponse } from '@/@types/BookApi'
-  import {DogBreeds } from '@/@types/DogApi';
+  import { DogBreedApiResponse,  } from '@/@types/DogApi';
+  import { ParsedBookResponse } from '@/@types/BookApi'
   import { getDogBreeds, getDogPictureByBreed, searchBooksByDog, parseOpenLibraryResponse, getAuthorandTitlebyID, parseOpenLibraryBookResponse, getAuthorbyAuthorID  } from '../service/api';
-import router from '@/router';
-
-  const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms)); //for artificial timeout
+  import router from '@/router';
 
   export default defineComponent({
     name: 'FavoriteDog',
@@ -60,7 +51,6 @@ import router from '@/router';
       let dogBreeds: DogBreedApiResponse | undefined
       let authorKeyAndTitle: ParsedBookResponse | undefined
       let stringArray: string[] | undefined
-      //let dogPicture: DogImageApiResponse | undefined
       return {
         test: "Hello there",
         dogBreeds: dogBreeds,
@@ -88,22 +78,15 @@ import router from '@/router';
         this.author = ""
       },
       async fetchDogBreedData() {
+        //Just to show an example that I normally wrap my api calls in try catch blocks.
         try {
-          console.log("response")
            const response = await getDogBreeds();
-           console.log(response)
            this.dogBreeds = response
-           console.log(this.dogBreeds)
-           console.log(this.dogBreeds.message)
-          // const api2Response = await getApi2Data();
-
-          //this.combinedData = { ...api1Response, ...api2Response };
         } catch (error) {
           console.error('Error fetching data:', error);
         }
       },
 
-      //Some of the structure of the returns for this book api below required some  "hack and slashing" 
       //Would definitely come and spend some time here to clean this up.
       //Would like to add the functionality to display around 5-10 books (if that many results are available) and allow the user to pick which ones they'd like to save. Is set up to deal with presenting multiple books with the stringArray, but am just presenting them with one book for now
       async findDogsandBooks(breed: string) {
@@ -111,18 +94,11 @@ import router from '@/router';
         this.dogPictureUrl = response.message
         this.selectedBreed = breed
         window.scrollTo(0,0);
-
+        
         const libraryResponse = await searchBooksByDog(breed);
-        console.log(libraryResponse)
         this.stringArray = parseOpenLibraryResponse(libraryResponse);
-        console.log(this.stringArray)
-       this.filteredStringArray = this.stringArray.filter(entry => entry.startsWith("s/")); //some dogs return some non ID's
-        try {
+        this.filteredStringArray = this.stringArray.filter(entry => entry.startsWith("s/")); //some dogs return some non ID's
         this.trimmedParam = this.stringArray[0].slice(2, this.stringArray.length) //This is setup to be able to present more than one book, but because of time constraints decided to just display the first book result.
-        }
-        catch {
-          alert('A couple dog breeds are still not functioning as properly, please pick another dog')
-        }
 
         const authorKeyAndTitleResponse = await getAuthorandTitlebyID(this.trimmedParam)
 
@@ -145,7 +121,7 @@ import router from '@/router';
       router.push(`/saved-books?title=${this.displayTitleOrFullTitle()}&author=${this.author}&dogPicUrl=${this.dogPictureUrl}&breed=${this.selectedBreed}`)
       },
       async delayForTwoSeconds(): Promise<void> {
-        return new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 5 seconds (5000 milliseconds)
+        return new Promise(resolve => setTimeout(resolve, 2000)); // Wait for 2 seconds (2000 milliseconds)
       },
       async artificialDelay() {
       // eslint-disable-next-line

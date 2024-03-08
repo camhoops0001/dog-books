@@ -3,8 +3,6 @@
 <html lang="en" >
 <body>
   
-  
-
 <!-- Starbackground -->
 <div id='stars'></div>
 <div id='stars2'></div>
