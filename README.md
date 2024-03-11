@@ -1,4 +1,4 @@
-# This is a WebApi meant to utilize two seperate backend API's.
+# This is a WebApi meant to utilize two separate backend API's.
 
 Dog API  
 
